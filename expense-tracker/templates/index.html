@@ -50,7 +50,7 @@
 
 <h2>Monthly Summary</h2>
 
-<p>Total: ₹{{ total }}</p>
+<p><b>Total:</b> ₹{{ total }}</p>
 
 <ul>
 {% for cat, amt in summary.items() %}
@@ -62,7 +62,7 @@
 
 <h2>Expenses</h2>
 
-<table border="1">
+<table border="1" cellpadding="10">
 
 <tr>
     <th>Title</th>
@@ -77,12 +77,18 @@
 
 <tr>
     <td>{{ e.title }}</td>
-    <td>{{ e.amount }}</td>
+    <td>₹{{ e.amount }}</td>
     <td>{{ e.category }}</td>
     <td>{{ e.date }}</td>
     <td>{{ e.note }}</td>
 
     <td>
+        <a href="/edit/{{ e._id }}">
+            Edit
+        </a>
+
+        |
+
         <a href="/delete/{{ e._id }}">
             Delete
         </a>

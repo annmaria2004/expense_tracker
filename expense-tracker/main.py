@@ -70,6 +70,54 @@ def add_expense(
     )
 
 
+@app.get("/edit/{id}")
+def edit_expense(
+    request: Request,
+    id: str
+):
+
+    expense = expenses.find_one(
+        {"_id": ObjectId(id)}
+    )
+
+    return templates.TemplateResponse(
+        "edit.html",
+        {
+            "request": request,
+            "expense": expense
+        }
+    )
+
+
+@app.post("/update/{id}")
+def update_expense(
+    id: str,
+    title: str = Form(...),
+    amount: float = Form(...),
+    category: str = Form(...),
+    date: str = Form(...),
+    note: str = Form("")
+):
+
+    expenses.update_one(
+        {"_id": ObjectId(id)},
+        {
+            "$set": {
+                "title": title,
+                "amount": amount,
+                "category": category,
+                "date": date,
+                "note": note
+            }
+        }
+    )
+
+    return RedirectResponse(
+        url="/",
+        status_code=303
+    )
+
+
 @app.get("/delete/{id}")
 def delete_expense(id: str):
 

@@ -1,24 +1,50 @@
-# Expense Tracker
+Ledger — Personal Expense Tracker
 
-A simple Expense Tracker built using FastAPI, MongoDB, and Jinja2 Templates.
+A clean, fast personal expense tracker built with TanStack Start, React, and Tailwind CSS. Log spending, filter by category and date, and see monthly summaries with category breakdowns.
 
 ## Features
 
-- Add expenses
-- Edit expenses
+- Add expenses with title, amount, category, date, and optional note
+- Edit existing expenses
 - Delete expenses
-- Monthly expense summary
-- MongoDB database integration
+- Search and filter by keyword, category, and date range
+- Monthly expense summary with category breakdown bars
+- Dark mode support
+- Responsive layout
 
 ## Tech Stack
 
-- FastAPI
-- MongoDB Atlas
-- Jinja2
-- Python
+- TanStack Start (React 19 + Vite)
+- TypeScript
+- Tailwind CSS v4
+- shadcn/ui (Radix UI primitives)
+- date-fns
+- Recharts
+- React Hook Form + Zod
+- LocalStorage persistence
 
 ## Run Locally
 
 ```bash
-pip install -r requirements.txt
-uvicorn main:app --reload
+# Install dependencies
+bun install
+
+# Start dev server
+bun dev
+```
+
+Then open `http://localhost:3000` in your browser.
+
+## Build for Production
+
+```bash
+bun run build
+```
+
+## Data Storage
+
+Expenses are stored in the browser's `localStorage`. Clearing site data will erase all entries.
+
+## License
+
+MIT
